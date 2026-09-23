@@ -1,0 +1,38 @@
+﻿@model List<POOI_T1_ESPINOZA.Models.Empleado>
+
+@{
+    ViewBag.Title = "Planilla";
+}
+
+<h2>Planilla</h2>
+
+<p>
+    @Html.ActionLink(
+        "Registrar Nuevo Empleado",
+        "RegistrarEmpleado",
+        "Planilla"
+    )
+</p>
+
+<table class="table">
+
+    <tr>
+        <th>idEmpleado</th>
+        <th>nombreEmpleado</th>
+        <th>categoriaEmpleado</th>
+        <th>nHijos</th>
+        <th>tipoContrato</th>
+    </tr>
+
+    @foreach (var empleado in Model)
+    {
+        <tr>
+            <td>@empleado.idEmpleado</td>
+            <td>@empleado.nombreEmpleado</td>
+            <td>@empleado.categoriaEmpleado</td>
+            <td>@empleado.nHijos</td>
+            <td>@empleado.tipoContrato</td>
+        </tr>
+    }
+
+</table>

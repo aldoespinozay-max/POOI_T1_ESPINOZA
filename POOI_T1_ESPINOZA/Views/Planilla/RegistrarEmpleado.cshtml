@@ -1,0 +1,108 @@
+﻿@model POOI_T1_ESPINOZA.Models.Empleado
+
+@{
+    ViewBag.Title = "Registrar Empleado en Planilla";
+}
+
+<h2>Registrar Empleado en Planilla</h2>
+
+<h4>Empleado</h4>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                ID Empleado:
+            </label>
+
+            <div class="col-md-10">
+                <input type="text"
+                       name="idEmpleado"
+                       class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Nombre:
+            </label>
+
+            <div class="col-md-10">
+                <input type="text"
+                       name="nombreEmpleado"
+                       class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Categoría:
+            </label>
+
+            <div class="col-md-10">
+                <select name="categoriaEmpleado"
+                        class="form-control">
+
+                    <option value="">Seleccione categoría</option>
+                    <option value="E1">E1</option>
+                    <option value="E2">E2</option>
+                    <option value="E3">E3</option>
+                    <option value="OTRA">OTRA</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Número de hijos:
+            </label>
+
+            <div class="col-md-10">
+                <input type="number"
+                       name="nHijos"
+                       class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Tipo de contrato:
+            </label>
+
+            <div class="col-md-10">
+                <select name="tipoContrato"
+                        class="form-control">
+
+                    <option value="">Seleccione contrato</option>
+                    <option value="Indefinido">Indefinido</option>
+                    <option value="Contratado">Contratado</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit"
+                       value="REGISTRAR NUEVO"
+                       class="btn btn-primary" />
+
+            </div>
+        </div>
+
+    </div>
+}
+
+<hr />
+
+@Html.ActionLink(
+    "Ver Planilla",
+    "Index",
+    "Planilla"
+)

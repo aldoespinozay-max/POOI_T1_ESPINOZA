@@ -1,0 +1,187 @@
+﻿@model POOI_T1_ESPINOZA.Models.Empleado
+
+@{
+    ViewBag.Title = "RegistrarEmpleado";
+}
+
+<h2>Registrar Empleado</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h4>Datos del Empleado</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.idEmpleado,
+                htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.idEmpleado,
+                    new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.idEmpleado,
+                    "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombreEmpleado,
+                htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombreEmpleado,
+                    new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.nombreEmpleado,
+                    "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.categoriaEmpleado,
+                htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(
+                    model => model.categoriaEmpleado,
+
+                    new SelectList(new[]
+                    {
+                        new { Value = "E1", Text = "E1" },
+                        new { Value = "E2", Text = "E2" },
+                        new { Value = "E3", Text = "E3" },
+                        new { Value = "OTRA", Text = "Otra categoría" }
+
+                    }, "Value", "Text"),
+
+                    "Seleccione categoría",
+
+                    new { @class = "form-control" }
+                )
+
+                @Html.ValidationMessageFor(model => model.categoriaEmpleado,
+                    "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nHijos,
+                htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.nHijos,
+                    new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            type = "number"
+                        }
+                    })
+
+                @Html.ValidationMessageFor(model => model.nHijos,
+                    "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tipoContrato,
+                htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(
+                    model => model.tipoContrato,
+
+                    new SelectList(new[]
+                    {
+                        new { Value = "Indefinido", Text = "Indefinido" },
+                        new { Value = "Contratado", Text = "Contratado" }
+
+                    }, "Value", "Text"),
+
+                    "Seleccione tipo de contrato",
+
+                    new { @class = "form-control" }
+                )
+
+                @Html.ValidationMessageFor(model => model.tipoContrato,
+                    "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit"
+                       value="REGISTRAR"
+                       class="btn btn-primary" />
+
+            </div>
+        </div>
+
+    </div>
+}
+
+
+@if (ViewBag.SueldoBasico != null)
+{
+    <div class="form-horizontal">
+
+        <h4>Resultados</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Sueldo Básico:</label>
+            <div class="col-md-10">
+                <input type="text"
+                       class="form-control"
+                       value="@ViewBag.SueldoBasico"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Escolaridad:</label>
+            <div class="col-md-10">
+                <input type="text"
+                       class="form-control"
+                       value="@ViewBag.Escolaridad"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Bonificación:</label>
+            <div class="col-md-10">
+                <input type="text"
+                       class="form-control"
+                       value="@ViewBag.Bonificacion"
+                       readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Monto a Pagar:</label>
+            <div class="col-md-10">
+                <input type="text"
+                       class="form-control"
+                       value="@ViewBag.MontoAPagar"
+                       readonly />
+            </div>
+        </div>
+
+    </div>
+}
